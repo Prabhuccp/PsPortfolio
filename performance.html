@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bad HTML Practices - Performance & Security Issues</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body { background-color: #f0f0f0; font-family: Arial, sans-serif; }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to Performance and Security Issues Page</h1>
+
+    <!-- Inefficient loop (Performance issue) -->
+    <div id="loop-container">
+        <h2>Items List (Inefficient Loop)</h2>
+        <ul id="items-list"></ul>
+    </div>
+
+    <script>
+        // Inefficient loop causing performance issue
+        var items = [];
+        for (var i = 0; i < 100000; i++) { 
+            items.push("Item " + i); // Inefficient memory usage (too many iterations)
+        }
+        
+        var listContainer = document.getElementById('items-list');
+        for (var i = 0; i < items.length; i++) {
+            var listItem = document.createElement('li');
+            listItem.textContent = items[i];
+            listContainer.appendChild(listItem);
+        }
+    </script>
+
+    <!-- SQL Injection Risk (Simulated security vulnerability with unsanitized input) -->
+    <h2>Search User (Vulnerable to SQL Injection)</h2>
+    <form method="post" action="searchUser.php">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username">
+        <button type="submit">Search</button>
+    </form>
+    <p>In this form, input is not sanitized and can lead to SQL injection vulnerabilities.</p>
+
+    <!-- Hardcoded Sensitive Information -->
+    <div>
+        <p>Admin Username: admin</p>
+        <p>Admin Password: password123</p> <!-- Exposing sensitive info -->
+    </div>
+
+    <!-- Access Control Flaw (Simulated) -->
+    <h2>Admin Area</h2>
+    <div id="admin-area">
+        <!-- The admin section should not be visible to normal users -->
+        <p>Only admins should access this section!</p>
+    </div>
+
+    <script>
+        // Simulating access control flaw by showing admin content to all users
+        var userRole = 'user';  // Change this to 'admin' to see the flaw
+        if (userRole === 'admin') {
+            document.getElementById('admin-area').style.display = 'block';
+        } else {
+            document.getElementById('admin-area').style.display = 'block';  // Unauthorized access
+        }
+    </script>
+
+    <!-- Broken access control (user shouldn't see admin content) -->
+    <h2>Unprotected Admin Links</h2>
+    <a href="admin-dashboard.html">Admin Dashboard</a> <!-- No access control applied here -->
+
+    <!-- Deprecated HTML Tags -->
+    <font color="red">This is a red text (deprecated tag)</font>
+    <center><h2>Centered Text (deprecated tag)</h2></center>
+
+    <footer>
+        <p>&copy; 2024 Prabhu</p>
+    </footer>
+</body>
+</html>
