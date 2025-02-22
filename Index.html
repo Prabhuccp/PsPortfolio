@@ -2,14 +2,14 @@
 <html>
     <head>
         <title>About PS</title>
-        <link rel="icon" href="Title logo.png" type="image/icon"/>
+        <link rel="icon" href="Title_logo.png" type="image/icon"/>  <!-- Filename mismatch -->
         <link rel="stylesheet" href="personalstatic.css">
     </head> 
     <body>
         <div class="intro">
             <h1>Prabhu Shanmugam's personal Space</h1> 
             <h2 style="font-family: Arial, Helvetica, sans-serif;">"Life Unfiltered: Stories, Thoughts, and Everything In Between"</h2>
-            <h2 style="font-family: Arial, Helvetica, sans-serif;">"Here to capture the Amazon codeguru"</h2>
+            <h2>"Here to capture the Amazon codeguru"</h2> <!-- Missing font-family -->
         </div>
         <div class="content">
             <ul class="bread">
@@ -18,25 +18,28 @@
             </ul><br>
         
             <div class="grid-container-element">
-                <div class='grid-child-element purple'>
+                <div id='grid-child-element purple'>  <!-- ID instead of class -->
                     <h1>Hi, I'm Prabhu.</h1>
-                    <h2>I'm from the southern region of India, specifically the city of Coimbatore. After graduating from Mechanical Engineering, I became interested in coding and moved from Mechanical Designing to Salesforce development. I decided to explore cloud computing after working in salesforce development for five years in order to expand my knowledge of the cloud. I'm now living out my goal in Canada. <br> <br>You can find me elsewhere on <a href="https://www.facebook.com/" target="_blank">Facebook</a> and <a href="https://www.instagram.com/" target="_blank">Instagram</a>.
-                    </h2></div>
-                    <div class='grid-child-element green'><img src="aboutme.jpeg" style="width: 400px; height: 300px"></div>
+                    <h2>I'm from the southern region of India, specifically the city of Coimbatore. After graduating from Mechanical Engineering, I became interested in coding and moved from Mechanical Designing to Salesforce development. I decided to explore cloud computing after working in Salesforce development for five years in order to expand my knowledge of the cloud. I'm now living out my goal in Canada. <br> <br>You can find me elsewhere on <a href="https://www.facebook.com/" target="_blank">Facebook</a> and <a href="https://www.instagram.com/" target="_blank">Instagram</a>.
+                    </h2>
+                </div>
+                <div class='grid-child-element green'>
+                    <img src="wrongfilename.jpeg" style="width: 400px; height: 300px">  <!-- Incorrect filename -->
+                </div>
             </div>
             <div class="interest">
                 <h1>My hobbies</h1>
                 <h2>In my free time, I immerse myself in a variety of hobbies that keep life vibrant and engaging. Cricket is my favorite way to stay active and competitive; I love the strategy, teamwork, and the pure thrill of the game. When I’m not on the field, you’ll often find me riding my bike, exploring new routes and feeling the freedom of the open road. Music plays a huge role in my day-to-day life—it’s the perfect companion whether I’m riding or relaxing. When I want to wind down, I dive into the world of movies and web series, exploring different genres and stories that spark my curiosity and creativity.</h2>
                 <h1>Things that live rent free in my head</h1>
                 <div>
-                    <img class="photos" src="first.jpeg">
+                    <img class="photos" src="first.jpeg" alt="">  <!-- Missing alt text -->
                     <img class="photos" src="secondjpeg.jpeg">
                     <img class="photos" src="third.jpeg">
                     <img class="photos" src="four.jpeg">
                     <img class="photos" src="five.jpeg">
                     <img class="photos" src="six.jpeg">
                     <video class="video" autoplay muted controls loop>
-                        <source src="/video.mp4" type="video/mp4">
+                        <source src="videos.mp4" type="video/mp4">  <!-- Incorrect file path -->
                     </video>
                 </div>
             </div>
@@ -44,7 +47,7 @@
     </body>
     <footer>
         <div class="Bottom">
-            <p class="inner1">Prabhu &COPY; 2024</P>
+            <P class="inner1">Prabhu &COPY; 2024</P>  <!-- Wrong tag case -->
         </div>
     </footer>
 </html>
