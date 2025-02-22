@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bad HTML Practices</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body { background-color: #f0f0f0; font-family: Arial, sans-serif; } /* Inline styles (bad practice) */
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to Bad Practices Page</h1>
+    
+    <!-- Hardcoded Password (Security risk) -->
+    <div style="display:none;">
+        <p>Username: admin</p>
+        <p>Password: 123456789</p> <!-- Hardcoded password -->
+    </div>
+
+    <!-- Missing alt attributes, and broken image sources -->
+    <img src="image1.jpg" width="500px" height="300px">
+    <img src="image2.jpg">
+    <img src="image3.jpg" alt="image" height="200px"> <!-- Missing alt attribute (partially fixed) -->
+
+    <!-- Inline JavaScript (bad practice) -->
+    <script>
+        alert('Welcome!'); // Pop-up alert
+    </script>
+
+    <!-- Deprecated HTML tags (e.g., <font> and <center>) -->
+    <font color="red">This is a red text</font>
+    <center><h2>Centered Text</h2></center> <!-- Deprecated tag -->
+    
+    <!-- Improper HTML Structure: No meta tags, title tags, or semantic HTML -->
+    <div>
+        <p>There is no clear structure here, and it's just random content</p>
+    </div>
+
+    <!-- Unescaped special characters -->
+    <p>5 < 10 & 7 > 5</p> <!-- Not escaped properly, should use &lt; and &gt; -->
+
+    <!-- Unused class and id attributes -->
+    <div class="unused-class" id="unused-id">
+        <p>Some content here</p>
+    </div>
+
+    <!-- Hardcoded style attributes (again) -->
+    <p style="color: blue;">This text is blue but should be done via CSS</p>
+
+    <!-- Unorganized and poorly structured code -->
+    <footer>
+        <p>Contact us at <a href="mailto:email@example.com">email@example.com</a></p>
+    </footer>
+
+    <!-- Missing external resources like stylesheets or scripts -->
+    <!-- Hardcoding a link to an external JS or CSS file is bad practice if it can break in the future -->
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+</body>
+</html>
