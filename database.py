@@ -18,12 +18,6 @@ SECRET_KEY = os.getenv("SECRET_KEY", "supersecretkey")  # Used for secure hashin
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-# Database connection pool
-def get_db_connection():
-    conn = sqlite3.connect(DB_NAME, check_same_thread=False)  # Allow multiple threads
-    conn.row_factory = sqlite3.Row  # Return results as dictionary-like objects
-    return conn
-
 # Validate user input
 def is_valid_input(data, keys):
     return all(key in data and isinstance(data[key], str) and data[key].strip() for key in keys)
@@ -40,13 +34,14 @@ def login():
         username = data["username"].strip()
         password = data["password"].strip()
 
-        conn = get_db_connection()
-        cursor = conn.cursor()
+        # ❌ FIXED: Using `with` ensures the connection closes automatically
+        with sqlite3.connect(DB_NAME) as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
 
-        # Use parameterized query to prevent SQL injection
-        cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
-        user = cursor.fetchone()
-        conn.close()
+            # Use parameterized query to prevent SQL injection
+            cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+            user = cursor.fetchone()
 
         if user and check_password_hash(user["password"], password):
             return jsonify({"message": "Login successful"}), 200
@@ -72,13 +67,11 @@ def add_user():
         # Hash password before storing it
         hashed_password = generate_password_hash(password)
 
-        conn = get_db_connection()
-        cursor = conn.cursor()
-
-        # Use parameterized query to prevent SQL injection
-        cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
-        conn.commit()
-        conn.close()
+        # ❌ FIXED: Using `with` to avoid resource leaks
+        with sqlite3.connect(DB_NAME) as conn:
+            cursor = conn.cursor()
+            cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
+            conn.commit()
 
         return jsonify({"message": "User added successfully"}), 201
 
