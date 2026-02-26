@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Contact Summary for this Account">
+        <template if:true={error}>
+            <p class="slds-text-color_error slds-p-around_small">{error}</p>
+        </template>
+
+        <template if:true={contactCount}>
+            <p class="slds-p-horizontal_small">Total Contacts: {contactCount}</p>
+            <ul class="slds-p-horizontal_small">
+                <template for:each={contactNames} for:item="name">
+                    <li key={name}>• {name}</li>
+                </template>
+            </ul>
+        </template>
+    </lightning-card>
+</template>
